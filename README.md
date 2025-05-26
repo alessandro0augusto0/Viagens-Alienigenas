@@ -16,6 +16,12 @@
 
 ## ✨ Sobre o Projeto
 
+<p align="left">
+    <img src="https://img.shields.io/badge/WordPress-Inicialmente%20no%20WordPress-21759b?logo=wordpress&logoColor=white&style=for-the-badge" alt="WordPress Badge" />
+</p>
+
+Este projeto foi inicialmente desenvolvido no WordPress, mas decidi migrá-lo para código puro (HTML, CSS e JavaScript) para compartilhar e versionar no GitHub de forma aberta e didática.
+
 O **Viagens Alienígenas** é um site fictício e divertido, criado para o curso de Técnico em Manutenção e Suporte em Informática (IFSULDEMINAS), na disciplina de Gerenciador de Conteúdos para Internet.
 
 > **Tema:** Uma agência de viagens interestelar para humanos e alienígenas, com destinos em Marte, Saturno, Vênus, Lua e muito mais!
