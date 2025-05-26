@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viagens Alienígenas - Explore o Cosmos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --space-dark: #0a081f;
+            --space-purple: #1a0d4d;
+            --space-blue: #0f0c29;
+            --neon-green: #00ffaa;
+            --neon-purple: #9d00ff;
+            --neon-blue: #00f7ff;
+            --text-light: #ffffff;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--space-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+        
+        .cosmic-banner {
+            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cosmic-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 8, 31, 0.7);
+            z-index: 1;
+        }
+        
+        .cosmic-title {
+            position: relative;
+            z-index: 2;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--neon-green);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin: 0;
+            text-shadow: 0 0 15px var(--neon-purple), 
+                         0 0 30px var(--neon-blue),
+                         0 0 45px var(--neon-green);
+            animation: cosmicGlow 3s infinite alternate;
+        }
+        
+        @keyframes cosmicGlow {
+            0% { text-shadow: 0 0 15px var(--neon-purple), 0 0 30px var(--neon-blue), 0 0 45px var(--neon-green); }
+            50% { text-shadow: 0 0 20px var(--neon-purple), 0 0 40px var(--neon-blue), 0 0 60px var(--neon-green); }
+            100% { text-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--neon-blue), 0 0 75px var(--neon-green); }
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: transparent;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            opacity: var(--opacity);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: var(--opacity); }
+            50% { opacity: calc(var(--opacity) * 0.3); }
+        }
+        
+        header {
+            background: linear-gradient(90deg, var(--space-blue) 0%, var(--space-purple) 50%, var(--space-blue) 100%);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--neon-green);
+            box-shadow: 0 0 25px rgba(157, 0, 255, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            color: var(--neon-green);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-text:hover {
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        nav a:hover {
+            background: rgba(0, 255, 170, 0.2);
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        
+        .hero {
+            background-color: var(--space-dark);
+            background-image: url('https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 80px 20px;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 60px 40px;
+            backdrop-filter: blur(5px);
+            background: rgba(15, 12, 41, 0.7);
+            border-radius: 15px;
+            border: 2px solid var(--neon-green);
+            box-shadow: 0 0 30px var(--neon-purple);
+        }
+        
+        .hero-title {
+            color: var(--neon-green);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+        
+        .hero-subtitle {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin: 0 15px 20px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--neon-purple) 0%, var(--neon-green) 100%);
+            color: #000 !important;
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.7);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px var(--neon-green);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--neon-green) !important;
+            border: 2px solid var(--neon-green);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 255, 170, 0.1);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+        
+        .features {
+            max-width: 1200px;
+            margin: 60px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        .feature-card {
+            background: rgba(15, 12, 41, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 247, 255, 0.3);
+        }
+        
+        .feature-card:nth-child(1) {
+            border-color: var(--neon-purple);
+        }
+        
+        .feature-card:nth-child(2) {
+            border-color: var(--neon-blue);
+        }
+        
+        .feature-card:nth-child(3) {
+            border-color: #ff4d4d;
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--neon-green);
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-desc {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial {
+            max-width: 800px;
+            margin: 80px auto;
+            background: rgba(157, 0, 255, 0.2);
+            padding: 40px;
+            border-radius: 10px;
+            border-left: 5px solid var(--neon-green);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 8rem;
+            color: rgba(0, 255, 170, 0.1);
+            font-family: serif;
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .testimonial-text {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            color: var(--neon-green);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background: linear-gradient(90deg, #0a061f 0%, var(--space-purple) 50%, #0a061f 100%);
+            padding: 60px 0 20px;
+            border-top: 1px solid var(--neon-purple);
+            box-shadow: 0 0 30px rgba(0, 255, 170, 0.3);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            color: var(--neon-green);
+            font-family: 'Orbitron', sans-serif;
+            border-bottom: 1px solid var(--neon-green);
+            display: inline-block;
+            padding-bottom: 5px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .footer-column ul {
+            color: var(--text-light);
+            list-style: none;
+            padding: 0;
+            line-height: 2;
+        }
+        
+        .footer-column a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .footer-column a:hover {
+            color: var(--neon-green);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(157, 0, 255, 0.5);
+        }
+        
+        .copyright {
+            color: var(--neon-purple);
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .cosmic-title {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+                margin: 0 0 15px;
+                display: block;
+                width: 80%;
+                margin: 0 auto 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Faixa Cosmic Banner -->
+    <div class="cosmic-banner">
+        <div class="stars" id="stars-container"></div>
+        <h1 class="cosmic-title">VIAJEM PARA O ESPAÇO</h1>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="http://localhost/viagensalienigenas/" class="logo-text">
+                    🛸 VIAGENS ALIENÍGENAS
+                </a>
+            </div>
+            
+            <!-- MENU -->
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="nave.html">Nave Espacial</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">VIAGENS ALIENÍGENAS</h1>
+            <p class="hero-subtitle">Explore o cosmos em nossa nave de luxo e viva experiências <span class="highlight">fora deste mundo!</span></p>
+            
+            <!-- BOTÕES -->
+            <a href="destinos.html" class="btn btn-primary">
+                🚀 VER DESTINOS
+            </a>
+            
+            <a href="nave.html" class="btn btn-secondary">
+                🛸 CONHEÇA NOSSA NAVE
+            </a>
+        </div>
+        
+        <!-- DESTAQUES EM GRID -->
+        <div class="features">
+            <!-- CARD 1 -->
+            <div class="feature-card">
+                <div class="feature-icon">🪐</div>
+                <h3 class="feature-title">12 Planetas</h3>
+                <p class="feature-desc">Destinos incríveis em 5 sistemas estelares diferentes</p>
+            </div>
+            
+            <!-- CARD 2 -->
+            <div class="feature-card">
+                <div class="feature-icon">👽</div>
+                <h3 class="feature-title">Encontros Alienígenas</h3>
+                <p class="feature-desc">Interação com 7 espécies interestelares certificadas</p>
+            </div>
+            
+            <!-- CARD 3 -->
+            <div class="feature-card">
+                <div class="feature-icon">🛌</div>
+                <h3 class="feature-title">Conforto Cósmico</h3>
+                <p class="feature-desc">Cabines com gravidade artificial e vista 360°</p>
+            </div>
+        </div>
+        
+        <!-- DEPOIMENTO -->
+        <div class="testimonial">
+            <p class="testimonial-text">"A Viagem Alienígena superou todas as expectativas! Marte em 2 horas com champanhe espacial nas mãos."</p>
+            <p class="testimonial-author">- Zygon, cliente de Alpha Centauri</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <!-- LINHAS DO RODAPÉ -->
+            <div class="footer-grid">
+                <!-- COLUNA 1 -->
+                <div class="footer-column">
+                    <h3>Sobre Nós</h3>
+                    <p>A primeira agência de viagens interestelares certificada pela Federação Galáctica. Operando desde 3024.</p>
+                </div>
+                
+                <!-- COLUNA 2 -->
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Política de Viagem</a></li>
+                        <li><a href="#">Seguro Interplanetário</a></li>
+                        <li><a href="#">FAQ Alienígena</a></li>
+                    </ul>
+                </div>
+                
+                <!-- COLUNA 3 -->
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>📡 contato@viagensalienigenas.com</li>
+                        <li>📞 +55 (XX) XXXX-XXXX</li>
+                        <li>📍 Av. Via Láctea, 42 - Terra</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- COPYRIGHT -->
+            <div class="footer-bottom">
+                <p class="copyright">© 3024 Viagens Alienígenas S.A. - Todos os direitos reservados em todos os universos paralelos</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Criar estrelas animadas para o banner cósmico
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars-container');
+            const starsCount = 200;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Tamanho aleatório entre 1px e 3px
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Posição aleatória
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Opacidade aleatória
+                const opacity = Math.random() * 0.8 + 0.2;
+                star.style.setProperty('--opacity', opacity);
+                
+                // Duração da animação aleatória
+                const duration = `${Math.random() * 3 + 2}s`;
+                star.style.setProperty('--duration', duration);
+                
+                starsContainer.appendChild(star);
+            }
+        });
+    </script>
+</body>
+</html>
